@@ -1,0 +1,16 @@
+import { mkdir, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+const response = await fetch('https://api.github.com/repos/ninja-build/ninja/releases/latest', { headers: { 'User-Agent': 'Draughts-Club-local-build' }, signal: AbortSignal.timeout(30000) });
+if (!response.ok) throw new Error(`Ninja metadata HTTP ${response.status}`);
+const release = await response.json();
+const asset = release.assets.find(asset => asset.name === 'ninja-win.zip');
+if (!asset) throw new Error('Official Windows Ninja archive not found');
+const archive = await fetch(asset.browser_download_url, { signal: AbortSignal.timeout(30000) });
+if (!archive.ok) throw new Error(`Ninja download HTTP ${archive.status}`);
+const bytes = Buffer.from(await archive.arrayBuffer());
+const checksum = createHash('sha256').update(bytes).digest('hex');
+if (asset.digest && asset.digest !== `sha256:${checksum}`) throw new Error('Ninja checksum mismatch');
+await mkdir('.cache/toolchain/ninja', { recursive: true });
+await writeFile('.cache/toolchain/ninja.zip', bytes);
+await writeFile('.cache/toolchain/ninja/source.json', JSON.stringify({ version: release.tag_name, url: asset.browser_download_url, sha256: checksum }, null, 2));
+console.log(`Official Ninja ${release.tag_name}, SHA-256 ${checksum}`);

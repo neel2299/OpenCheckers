@@ -1,0 +1,11 @@
+import { createHash } from 'node:crypto';
+import { mkdir } from 'node:fs/promises';
+import { downloadVerified } from './range-download.mjs';
+const version = '9.4.1';
+const wrapperUrl = `https://services.gradle.org/distributions/gradle-${version}-bin.zip`;
+const hash = BigInt('0x' + createHash('md5').update(wrapperUrl).digest('hex')).toString(36);
+const folder = `.cache/gradle/wrapper/dists/gradle-${version}-bin/${hash}`;
+await mkdir(folder, { recursive: true });
+const checksum = (await fetch(`https://downloads.gradle.org/distributions/gradle-${version}-bin.zip.sha256`, { signal: AbortSignal.timeout(30000) }).then(r => r.text())).trim().split(/\s/)[0];
+if (!/^[a-f0-9]{64}$/.test(checksum)) throw new Error('Invalid Gradle checksum response');
+await downloadVerified(`https://downloads.gradle.org/distributions/gradle-${version}-bin.zip`, `${folder}/gradle-${version}-bin.zip`, checksum, { chunkSize: 262144, concurrency: 16 });

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — OpenCheckers</title>
+  <style>
+    :root {
+      --bg: #F8F7F2;
+      --card: #FFFFFF;
+      --ink: #1C241B;
+      --muted: #566353;
+      --accent: #2F5D3A;
+      --line: #E2E6DC;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      margin: 0;
+      padding: 32px 16px;
+    }
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(28, 36, 27, 0.05);
+    }
+    h1 {
+      color: var(--accent);
+      margin-top: 0;
+      font-size: 1.9rem;
+    }
+    h2 {
+      color: var(--ink);
+      font-size: 1.25rem;
+      margin-top: 28px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line);
+    }
+    p, li {
+      color: var(--ink);
+      font-size: 0.98rem;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+    a {
+      color: var(--accent);
+    }
+    code {
+      background: #EEF1EA;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Privacy Policy — OpenCheckers</h1>
+    <p class="meta">
+      <strong>Effective Date:</strong> November 1, 2026<br />
+      <strong>Application Name:</strong> OpenCheckers (<code>com.neel.checkers</code>)
+    </p>
+
+    <p>
+      OpenCheckers is designed from the ground up as a local-first, offline-capable checkers and draughts application.
+      We respect your privacy and do not collect, store, sell, or transmit your personal data to any developer-operated server.
+    </p>
+
+    <h2>1. Information We Do Not Collect</h2>
+    <p>OpenCheckers <strong>does not</strong> require an account, login, or internet connection to play, solve puzzles, or analyze games. Specifically, we do <strong>not</strong> collect or transmit:</p>
+    <ul>
+      <li>Personal identifiers (name, email address, phone number, or account ID)</li>
+      <li>Precise or coarse GPS/network location data</li>
+      <li>Contacts, call logs, messages, or calendar entries</li>
+      <li>Microphone recordings or camera captures</li>
+      <li>Advertising identifiers, analytics telemetry, or behavioral tracking profiles</li>
+    </ul>
+
+    <h2>2. Information Stored Locally on Your Device</h2>
+    <p>To provide gameplay continuity and personalization, OpenCheckers stores the following data <strong>exclusively on your device</strong>:</p>
+    <ul>
+      <li><strong>Active and Completed Games:</strong> Board states, move histories, PDN game records, local Elo ratings against computer opponents, and up to five saved full-game computer analyses.</li>
+      <li><strong>Puzzle Progress:</strong> Solved puzzle records and difficulty progression.</li>
+      <li><strong>Preferences &amp; Customizations:</strong> Selected board variant, theme colors, sound/vibration toggles, and any custom audio clips or images you explicitly select via the system file picker for board/room personalization.</li>
+    </ul>
+    <p>
+      When you import a custom image or audio clip using your device's system file picker, the file is copied into OpenCheckers' private on-device application directory. It is <strong>never</strong> uploaded to any external server or shared with third parties.
+    </p>
+
+    <h2>3. Optional Developer Support (Donations)</h2>
+    <p>OpenCheckers is free to use with all features unlocked. The app includes an optional "Donate to the developer" sheet that you can dismiss at any time or open from Settings:</p>
+    <ul>
+      <li><strong>Local Timezone Check (On-Device Only):</strong> To display the most relevant payment option by default (UPI QR code for users in India vs. Buy Me a Coffee internationally), the app checks your device's local timezone string (<code>Asia/Kolkata</code> or <code>Asia/Calcutta</code>) solely within the app on your device. This timezone value is never transmitted off your device.</li>
+      <li><strong>External Payment Links:</strong> If you choose to tap the <a href="https://buymeacoffee.com/nitruspeed" rel="noopener noreferrer">Buy Me a Coffee</a> link or open an installed UPI payment app via a standard <code>upi://pay</code> link, you will be directed to that external website or payment application. Any transaction you complete there is governed by the privacy policy and terms of that respective payment provider. OpenCheckers does not receive or store your payment card, bank account, or billing details.</li>
+    </ul>
+
+    <h2>4. Permissions Requested</h2>
+    <p>OpenCheckers minimizes Android permissions and explicitly blocks unnecessary sensitive permissions in its manifest:</p>
+    <ul>
+      <li><strong>No Microphone Permission:</strong> <code>android.permission.RECORD_AUDIO</code> is blocked.</li>
+      <li><strong>No Broad External Storage Permission:</strong> <code>READ_EXTERNAL_STORAGE</code> and <code>WRITE_EXTERNAL_STORAGE</code> are blocked; custom file imports use the Android system document picker, which grants one-time scoped access only to the specific file you choose.</li>
+      <li><strong>Vibration / Haptics:</strong> Used locally for optional tactile move feedback (controllable in Settings).</li>
+    </ul>
+
+    <h2>5. Children's Privacy</h2>
+    <p>Because OpenCheckers does not collect, store, or transmit any personal information from any user, we do not knowingly or unknowingly collect personal data from children under the age of 13 (or the applicable age of digital consent in your jurisdiction).</p>
+
+    <h2>6. Data Retention and Deletion</h2>
+    <p>All app data resides locally on your device. You have full control to delete this data at any time by using the reset options inside <strong>Settings</strong>, clearing the app's storage in your Android device settings, or uninstalling the application.</p>
+
+    <h2>7. Changes to This Privacy Policy</h2>
+    <p>If future updates to OpenCheckers introduce new features that affect how data is handled, we will update this Privacy Policy and revise the "Effective Date" above prior to or concurrent with the release.</p>
+
+    <h2>8. Contact Us</h2>
+    <p>If you have any questions about this Privacy Policy, please contact the developer via the support email listed on the Google Play Store listing page or via <a href="https://buymeacoffee.com/nitruspeed" rel="noopener noreferrer">buymeacoffee.com/nitruspeed</a>.</p>
+  </main>
+</body>
+</html>
+

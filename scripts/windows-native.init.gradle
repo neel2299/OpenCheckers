@@ -1,0 +1,12 @@
+// CMake shortens a Windows SDK path containing spaces to 8.3 filenames. That
+// renames clang++.exe to CLANG_~1.EXE, so Clang must be told to use its C++ driver
+// explicitly or the standard C++ runtime is omitted during native linking.
+// Android's toolchain initializes an empty cached CMAKE_CXX_FLAGS, so provide
+// the driver mode explicitly; its standard security/architecture flags remain.
+allprojects { project ->
+    ['com.android.application', 'com.android.library'].each { plugin ->
+        project.plugins.withId(plugin) {
+            project.extensions.getByName('android').defaultConfig.externalNativeBuild.cmake.arguments.add('-DCMAKE_CXX_FLAGS=--driver-mode=g++')
+        }
+    }
+}
